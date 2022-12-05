@@ -7,11 +7,12 @@ part1 = ""
 part2 = ""
 
 crates = lines[0].split("\n")
+crates.reverse()
 
-for stack in crates[-1].split("  "):
+for stack in crates[0].split("  "):
     d.setdefault(int(stack.strip()), [])
 
-for stack in crates[0:len(crates) - 1]:
+for stack in crates[1:]:
     i = 0
     while True:
         try:
@@ -20,8 +21,6 @@ for stack in crates[0:len(crates) - 1]:
         except:
             break
 
-for item in d:
-    d[item].reverse()
 d2 = copy.deepcopy(d)
 
 for op in lines[1].rstrip().split("\n"):
