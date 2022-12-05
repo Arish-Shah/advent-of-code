@@ -1,4 +1,4 @@
-lines = open("./example", "r").read().strip().split("\n")
+lines = open("./input", "r").read().strip().split("\n")
 
 part1 = 0
 part2 = 0
