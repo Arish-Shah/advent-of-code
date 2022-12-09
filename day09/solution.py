@@ -1,27 +1,25 @@
 lines = open("input", "r").readlines()
 
+def get_add(d):
+    if d < 0:
+        return -1
+    return 1
+
 def get_next_hop(hy, hx, ty, tx):
     dy = ty - hy
     dx = tx - hx
 
-    if dy == -2:
-        ty = hy - 1
+    if abs(dy) == 2:
+        ty = hy + get_add(dy)
         if abs(dx) == 1:
-            tx = hx
-    if dy == 2:
-        ty = hy + 1
-        if abs(dx) == 1:
-            tx = hx
-    if dx == -2:
-        tx = hx - 1
-        if abs(dy) == 1:
-            ty = hy
-    if dx == 2:
-        tx = hx + 1
-        if abs(dy) == 1:
-            ty = hy
+            return ty, hx
 
-    return (ty, tx)
+    if abs(dx) == 2:
+        tx = hx + get_add(dx)
+        if abs(dy) == 1:
+            return hy, tx
+
+    return ty, tx
 
 hy = hx = ty = tx = 0
 ss: list[list[tuple[int, int]]] = [[(0, 0)] for _ in range(10)]
