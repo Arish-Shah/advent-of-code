@@ -1,6 +1,7 @@
-lines = open("example", "r").read().strip().split("\n")
+lines = open("input", "r").read().strip().split("\n")
 
-def cal_sand(rocks, max_y):
+def cal_sand(rocks, max_y, block=False):
+    r = set(rocks)
     sand = 0
 
     while True:
@@ -9,12 +10,15 @@ def cal_sand(rocks, max_y):
         
         while True:
             next_sand_x, next_sand_y = sand_x, sand_y + 1
-            if (next_sand_x, next_sand_y) in rocks:
+            if (next_sand_x, next_sand_y) in r:
                 next_sand_x, next_sand_y = sand_x - 1, sand_y + 1
-                if (next_sand_x, next_sand_y) in rocks:
+                if (next_sand_x, next_sand_y) in r:
                     next_sand_x, next_sand_y = sand_x + 1, sand_y + 1
-                    if (next_sand_x, next_sand_y) in rocks:
-                        rocks.add((sand_x, sand_y))
+                    if (next_sand_x, next_sand_y) in r:
+                        r.add((sand_x, sand_y))
+                        if block and (500, 0) in r:
+                            sand += 1
+                            fall = True
                         break
                     else:
                         sand_x, sand_y = next_sand_x, next_sand_y
@@ -58,4 +62,15 @@ for line in lines:
 max_y = max([y for _, y in rocks])
 part1 = cal_sand(rocks, max_y)
 
+max_x = max([x for x, _ in rocks])
+min_x = min([x for x, _ in rocks])
+max_y = max_y + 2
+
+# probably bad way to do this (1000 instead of infinity)
+for i in range(min_x - 1000, max_x + 1000):
+    rocks.add((i, max_y))
+
+part2 = cal_sand(rocks, max_y, block=True)
+
 print(part1)
+print(part2)
