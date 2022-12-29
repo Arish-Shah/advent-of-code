@@ -1,44 +1,33 @@
-lines = open("example", "r").read().strip().split("\n")
+lines = open("input", "r").read().splitlines()
 
 class Point:
-    def __init__(self, *args):
-        if len(args) == 1:
-            self.x, self.y = args[0]
-        else:
-            self.x, self.y = args
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
-    def __repr__(self):
-        return "({}, {})".format(self.x, self.y)
+    def dist(self, other):
+        return abs(self.x - other.x) + abs(self.y - other.y)
 
     def get_tuple(self):
         return (self.x, self.y)
 
-def dist(p1: Point, p2: Point):
-    return abs(p1.x - p2.x) + abs(p1.y - p2.y)
+    def no_beacon_points(self, d, y):
+        points = set()
+        for i in range(1, d+1):
+            if abs(self.y - y) <= i:
+                rhs = i - abs(self.y - y)
+                points.add((self.x + rhs, y))
+                points.add((self.x - rhs, y))
+        return points
 
-def get_x(s: Point, d, y):
-    rhs = d - abs(y - s.y)
-    return s.x - rhs, s.x + rhs
-
-def no_beacon_points(s: Point, d, y):
-    points: set[tuple[int, int]] = set()
-    for i in range(d, 0, -1):
-        if abs(y - s.y) <= i:
-            x1, x2 = get_x(s, i, y)
-            points.add((x1, y))
-            points.add((x2, y))
-    return points
-
-n = []
-part1_y = 10
+points = set()
 for line in lines:
-    s, b = [Point(tuple(map(lambda x: int(x), part[part.index("at")+3:]
-            .replace("x=", "")
-            .replace(" y=", "")
-            .split(",")))) for part in line.split(": ")]
-    d = dist(s, b)
-    n.extend(no_beacon_points(s, d, part1_y))
-    if b.get_tuple() in n:
-        n.remove(b.get_tuple())
+    data = [tuple(map(int, part[part.index("x="):].replace("x=", "").replace("y=", "").split(", "))) for part in line.split(": ")]
+    s = Point(*data[0])
+    b = Point(*data[1])
+    d = s.dist(b)
+    for p in s.no_beacon_points(d, 10):
+        if b != p:
+            points.add(p)
 
-print(len(set(n))) # part1
+print(len(points))
