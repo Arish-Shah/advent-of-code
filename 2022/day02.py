@@ -41,7 +41,7 @@ def get_result_value(result):
         return 6
 
 def main():
-    file = open("./input")
+    file = open("./input.txt")
 
     part1 = 0
     part2 = 0

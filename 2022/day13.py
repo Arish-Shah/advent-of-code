@@ -1,6 +1,6 @@
 from functools import cmp_to_key
 
-pairs = open("input", "r").read().strip().split("\n\n")
+pairs = open("input.txt", "r").read().strip().split("\n\n")
 
 def cmp(l, r):
     if type(l) is int and type(r) is int:

@@ -1,6 +1,6 @@
 import copy
 
-lines = open("./input", "r").read().split("\n\n")
+lines = open("./input.txt", "r").read().split("\n\n")
 
 d = {}
 part1 = ""

@@ -1,6 +1,6 @@
 import copy
 
-inputs = open("example", "r").read().strip().split("\n\n")
+inputs = open("input.txt", "r").read().strip().split("\n\n")
 
 monkeys = {}
 part1 = []

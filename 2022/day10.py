@@ -1,4 +1,4 @@
-lines = open("input", "r").readlines()
+lines = open("input.txt", "r").readlines()
 
 X = 1
 x = []

@@ -1,6 +1,6 @@
 import networkx as nx
 
-lines = open("input", "r").readlines()
+lines = open("input.txt", "r").readlines()
 
 grid = []
 G = nx.DiGraph()

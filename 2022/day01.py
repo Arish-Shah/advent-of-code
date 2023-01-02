@@ -1,5 +1,5 @@
 def main():
-    file = open("./input")
+    file = open("./input.txt")
 
     cal = []
     for elf in file.read().strip().split("\n\n"):

@@ -1,4 +1,4 @@
-lines = open("input", "r").readlines()
+lines = open("input.txt", "r").readlines()
 
 def get_add(d):
     if d < 0:

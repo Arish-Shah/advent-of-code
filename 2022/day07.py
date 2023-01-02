@@ -1,4 +1,4 @@
-lines = open("./input").readlines()
+lines = open("./input.txt").readlines()
 
 def create_path(l):
     return '/'.join(l).replace("//", "/")
