@@ -13,15 +13,26 @@ for line in lines:
     people.add(t)
     happy[f + t] = int(h)
 
-arrs = permutations(people, len(people))
+def arrange(people, happy):
+    happiness = None
+    arrs = permutations(people, len(people))
+    for arr in arrs:
+        h = 0
+        for i in range(len(arr)):
+            left, right = i-1, i+1
+            if left == -1: left = len(arr) - 1
+            if right == len(arr): right = 0
+            h = h + happy[arr[i] + arr[left]] + happy[arr[i] + arr[right]]
+        happiness = h if happiness is None else max(happiness, h)
+    return happiness
 
-for arr in arrs:
-    h = 0
-    for i in range(len(arr)):
-        left, right = i-1, i+1
-        if left == -1: left = len(arr) - 1
-        if right == len(arr): right = 0
-        h = h + happy[arr[i] + arr[left]] + happy[arr[i] + arr[right]]
-    part1 = h if part1 is None else max(part1, h)
+part1 = arrange(people, happy)
+
+people.add("Me")
+for p in people:
+    happy[p + "Me"] = happy["Me" + p] = 0
+
+part2 = arrange(people, happy)
 
 print(part1)
+print(part2)
