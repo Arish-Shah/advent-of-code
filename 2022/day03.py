@@ -1,4 +1,4 @@
-lines = open("./input.txt").read().strip().split("\n")
+lines = open("input.txt").read().strip().splitlines()
 
 def letter_sum(letters):
     s = 0

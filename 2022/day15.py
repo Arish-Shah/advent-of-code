@@ -1,4 +1,4 @@
-lines = open("input.txt", "r").read().splitlines()
+lines = open("input.txt").read().splitlines()
 
 class Point:
     def __init__(self, x, y):

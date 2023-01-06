@@ -1,6 +1,11 @@
+lines = open("input.txt").read().strip().splitlines()
+
 w = ["AY", "BZ", "CX"]
 d = ["AX", "BY", "CZ"]
 l = ["AZ", "BX", "CY"]
+
+part1 = 0
+part2 = 0
 
 def get_result(e, p):
     s = e + p
@@ -40,22 +45,11 @@ def get_result_value(result):
     else:
         return 6
 
-def main():
-    file = open("./input.txt")
+for line in lines:
+    e, p = line.split(" ")
+    part1 += get_value(p) + get_result(e, p)
+    sel = get_sel(e, get_result_value(p))
+    part2 += get_value(sel) + get_result(e, sel)
 
-    part1 = 0
-    part2 = 0
-
-    for line in file.read().strip().split("\n"):
-        e, p = line.split(" ")
-        part1 += get_value(p) + get_result(e, p)
-        sel = get_sel(e, get_result_value(p))
-        part2 += get_value(sel) + get_result(e, sel)
-
-    print(part1)
-    print(part2)
-
-    file.close()
-
-if __name__ == "__main__":
-    main()
+print(part1)
+print(part2)
