@@ -1,4 +1,4 @@
-lines = open("input.txt", "r").readlines()
+lines = open("input.txt").read().strip().splitlines()
 
 grid = []
 part1 = 0

@@ -1,4 +1,4 @@
-lines = open("input.txt", "r").read().strip().split("\n")
+lines = open("input.txt").read().strip().splitlines()
 
 def cal_sand(rocks, max_y, block=False):
     r = set(rocks)

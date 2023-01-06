@@ -1,4 +1,4 @@
-file = open("./input.txt", "r").read().strip().split("\n")
+file = open("input.txt").read().strip().splitlines()
 
 def find_marker(line, n):
     for i in range(0, len(line), 1):
