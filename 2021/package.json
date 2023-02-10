@@ -1,0 +1,7 @@
+{
+  "name": "2021",
+  "version": "0.1.0",
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
