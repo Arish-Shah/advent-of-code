@@ -3,6 +3,9 @@ from sys import argv
 lines = open(argv[1]).read().splitlines()
 part1, part2 = 0, 0
 
+def find(bank, size):
+    pass
+
 for line in lines:
     bank = list(line)
     largest = 0

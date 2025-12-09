@@ -7,7 +7,7 @@ part1, part2 = 0, 0
 current = 50
 
 for line in lines:
-    direction, amount = line[:1], int(line[1:])
+    direction, amount = line[:1], int(line[1:]) # L 68
     for _ in range(amount):
         if direction == "L": current -= 1
         if direction == "R": current += 1
